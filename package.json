@@ -1,0 +1,28 @@
+{
+  "name": "adventofcode2017",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon day5/day5part2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garnesson/adventofcode2017.git"
+  },
+  "author": "Gustav Blomér <gustav@blomer.se>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garnesson/adventofcode2017/issues"
+  },
+  "engines": {
+    "node": "^8.9.1",
+    "npm": "^5.5.1"
+  },
+  "homepage": "https://github.com/garnesson/adventofcode2017#readme",
+  "dependencies": {
+    "aoc-input-loader": "^1.0.2",
+    "dotenv": "^4.0.0"
+  }
+}
