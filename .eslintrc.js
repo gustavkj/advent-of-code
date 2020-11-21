@@ -8,6 +8,9 @@ module.exports = {
     node: true,
   },
   extends: ['airbnb-typescript/base', 'prettier'],
+  rules: {
+    'import/prefer-default-export': 'off',
+  },
   overrides: [
     {
       files: ['*.ts'],
@@ -18,6 +21,13 @@ module.exports = {
         'prettier',
         'prettier/@typescript-eslint',
       ],
+    },
+    {
+      files: ['*.spec.*'],
+      env: {
+        jest: true,
+      },
+      extends: ['plugin:jest/recommended'],
     },
   ],
 };
