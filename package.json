@@ -1,26 +1,25 @@
 {
-  "name": "adventofcode2017",
+  "name": "adventofcode",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "nodemon day8/day8_part2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/garnesson/adventofcode2017.git"
+    "url": "git+https://github.com/gustavkj/adventofcode.git"
   },
-  "author": "Gustav Blomér <gustav@blomer.se>",
+  "author": "Gustav Utterheim <gustav@utterheim.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/garnesson/adventofcode2017/issues"
+    "url": "https://github.com/gustavkj/adventofcode/issues"
   },
   "engines": {
     "node": "^8.9.1",
     "npm": "^5.5.1"
   },
-  "homepage": "https://github.com/garnesson/adventofcode2017#readme",
+  "homepage": "https://github.com/gustavkj/adventofcode#readme",
   "dependencies": {
     "aoc-input-loader": "^1.0.2",
     "dotenv": "^4.0.0"
