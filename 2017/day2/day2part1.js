@@ -3,10 +3,10 @@ const path = require('path');
 
 fs.readFile(path.join(__dirname, './data.txt'), 'utf8', function (err, data) {
   if (err) throw err;
-  const checksum = data.split('\n').reduce((sum, val, i, arr) => {
-    const row = val.split(/\s/).map(num => parseInt(num));
-    const max = row.reduce((max, cur) => Math.max(max, cur));
-    const min = row.reduce((min, cur) => Math.min(min, cur));
+  const checksum = data.split('\n').reduce((sum, val) => {
+    const row = val.split(/\s/).map((num) => parseInt(num, 10));
+    const max = row.reduce((maxVal, cur) => Math.max(maxVal, cur));
+    const min = row.reduce((minVal, cur) => Math.min(minVal, cur));
     return sum + max - min;
   }, 0);
 

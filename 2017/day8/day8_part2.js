@@ -1,35 +1,68 @@
 const inputLoader = require('aoc-loader');
 const config = require('../../config');
 
-inputLoader(2017, 8, config.aocSessionCookie).then(data => {
-  let rows = data.split('\n');
-  let regs = {};
-  let max = 0;
+function incOrDec(reg, op, amount) {
+  if (op === 'inc') {
+    return reg + amount;
+  }
+  if (op === 'dec') {
+    return reg - amount;
+  }
+  return reg;
+}
 
-  rows.map(row => {
-    let inst = row.split(/\s/);
-    inst[2] = parseInt(inst[2], 10);
-    inst[6] = parseInt(inst[6], 10);
+const operators = {
+  '==': (a, b) => {
+    return a === b;
+  },
+  '!=': (a, b) => {
+    return a !== b;
+  },
+  '>': (a, b) => {
+    return a > b;
+  },
+  '>=': (a, b) => {
+    return a >= b;
+  },
+  '<': (a, b) => {
+    return a < b;
+  },
+  '<=': (a, b) => {
+    return a <= b;
+  },
+};
 
-    if (typeof regs[inst[0]] === 'undefined') {
-      regs[inst[0]] = 0;
-    }
+inputLoader(2017, 8, config.aocSessionCookie).then(
+  (data) => {
+    const rows = data.split('\n');
+    const regs = {};
+    let max = 0;
 
-    if (typeof regs[inst[4]] === 'undefined') {
-      regs[inst[4]] = 0;
-    }
+    rows.forEach((row) => {
+      const inst = row.split(/\s/);
+      inst[2] = parseInt(inst[2], 10);
+      inst[6] = parseInt(inst[6], 10);
 
-    if (operators[inst[5]](regs[inst[4]], inst[6])) {
-      regs[inst[0]] = incOrDec(regs[inst[0]], inst[1], inst[2]);
-    }
+      if (typeof regs[inst[0]] === 'undefined') {
+        regs[inst[0]] = 0;
+      }
 
-    max = Math.max(max, ...Object.values(regs));
+      if (typeof regs[inst[4]] === 'undefined') {
+        regs[inst[4]] = 0;
+      }
 
-  });
-  console.log(max); // 6366
-}, err => {
-  if (err) throw err;
-});
+      if (operators[inst[5]](regs[inst[4]], inst[6])) {
+        regs[inst[0]] = incOrDec(regs[inst[0]], inst[1], inst[2]);
+      }
+
+      max = Math.max(max, ...Object.values(regs));
+    });
+    console.log(max); // 6366
+  },
+  (err) => {
+    if (err) throw err;
+  },
+);
 
 // const fs = require('fs');
 // const path = require('path');
@@ -62,33 +95,3 @@ inputLoader(2017, 8, config.aocSessionCookie).then(data => {
 //   });
 //   console.log(max);
 // });
-
-function incOrDec(reg, op, amount) {
-  if (op === 'inc') {
-    reg += amount;
-  } else if (op === 'dec') {
-    reg -= amount;
-  }
-  return reg;
-}
-
-const operators = {
-  '==': (a,b) => {
-    return a == b;
-  },
-  '!=': (a,b) => {
-    return a != b;
-  },
-  '>': (a,b) => {
-    return a > b;
-  },
-  '>=': (a,b) => {
-    return a >= b;
-  },
-  '<': (a,b) => {
-    return a < b;
-  },
-  '<=': (a,b) => {
-    return a <= b;
-  }
-};
