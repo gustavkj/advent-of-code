@@ -1,5 +1,5 @@
-const inputLoader = require('aoc-input-loader');
-const config = require('../config');
+const inputLoader = require('aoc-loader');
+const config = require('../../config');
 
 inputLoader(2017, 4, config.aocSessionCookie).then(data => {
   const noValid = data.split('\n').reduce((sum, passphrase) => {

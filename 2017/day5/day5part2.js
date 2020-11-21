@@ -1,5 +1,5 @@
-const inputLoader = require('aoc-input-loader');
-const config = require('../config');
+const inputLoader = require('aoc-loader');
+const config = require('../../config');
 
 inputLoader(2017, 5, config.aocSessionCookie).then(data => {
   const jumps = data.split('\n').map(num => parseInt(num));
