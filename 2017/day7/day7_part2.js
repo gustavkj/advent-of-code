@@ -9,8 +9,7 @@ function balanceDisc(disc) {
     disc.isBalanced = !!childWeights.reduce((a, b) => (a === b ? a : NaN));
 
     // eslint-disable-next-line no-param-reassign
-    disc.totalWeight =
-      disc.weight + childWeights.reduce((total, weight) => total + weight);
+    disc.totalWeight = disc.weight + childWeights.reduce((total, weight) => total + weight);
 
     if (!disc.isBalanced) {
       const weights = {};
@@ -30,9 +29,7 @@ function balanceDisc(disc) {
       } else {
         [rightWeight, faultyWeight] = childWeights;
       }
-      const faultyChild = disc.children.find(
-        (child) => child.totalWeight === faultyWeight,
-      );
+      const faultyChild = disc.children.find((child) => child.totalWeight === faultyWeight);
 
       // console.log(disc);
       console.log(faultyChild.key); // ptshtrn
@@ -64,15 +61,12 @@ inputLoader(2017, 7, config.aocSessionCookie).then(
     const rows = data.split('\n');
 
     const discs = rows.map((row) => {
-      const matches = row.match(
-        /([a-z]*)\s\(([0-9]*)\)(?:\s->\s((?:[a-z]*(?:,\s)?)*))?/,
-      );
+      const matches = row.match(/([a-z]*)\s\(([0-9]*)\)(?:\s->\s((?:[a-z]*(?:,\s)?)*))?/);
       return {
         key: matches[1],
         weight: parseInt(matches[2], 10),
         children: [],
-        childKeys:
-          typeof matches[3] !== 'undefined' ? matches[3].split(', ') : [],
+        childKeys: typeof matches[3] !== 'undefined' ? matches[3].split(', ') : [],
         hasParent: false,
         isBalanced: false,
         totalWeight: 0,

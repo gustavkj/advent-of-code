@@ -7,8 +7,7 @@ const sqrtLo = sqrtHi - 1;
 
 const cornerHi = sqrtHi ** 2;
 const cornerLo = sqrtLo ** 2 + 1;
-const stepsToMiddle =
-  sqrtHi % 2 === 0 ? (sqrtHi - 2) / 2 : Math.floor(sqrtHi / 2);
+const stepsToMiddle = sqrtHi % 2 === 0 ? (sqrtHi - 2) / 2 : Math.floor(sqrtHi / 2);
 
 let steps = Math.floor(sqrtHi / 2); // Steps to middle of spiral from layer
 

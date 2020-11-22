@@ -6,15 +6,12 @@ inputLoader(2017, 7, config.aocSessionCookie).then(
     const rows = data.split('\n');
 
     const discs = rows.map((row) => {
-      const matches = row.match(
-        /([a-z]*)\s\(([0-9]*)\)(?:\s->\s((?:[a-z]*(?:,\s)?)*))?/,
-      );
+      const matches = row.match(/([a-z]*)\s\(([0-9]*)\)(?:\s->\s((?:[a-z]*(?:,\s)?)*))?/);
       return {
         key: matches[1],
         weight: matches[2],
         children: [],
-        childKeys:
-          typeof matches[3] !== 'undefined' ? matches[3].split(', ') : [],
+        childKeys: typeof matches[3] !== 'undefined' ? matches[3].split(', ') : [],
         hasParent: false,
       };
     });
