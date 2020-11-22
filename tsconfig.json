@@ -10,8 +10,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
-    "outDir": "dist",
-    "typeRoots": ["./node_modules/@types", "./custom-types"]
+    "outDir": "dist"
   },
-  "include": ["**/*.ts", "**/*.js", ".eslintrc.js", "custom-types"]
+  "include": ["**/*.ts", "**/*.js", ".eslintrc.js"]
 }
