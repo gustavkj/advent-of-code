@@ -18,6 +18,10 @@ function parseInput(input: string): number[] {
 async function solveDay1Part2(): Promise<void> {
   const input = await getInput(2019, 1, config.aocSessionCookie);
 
+  if (!input) {
+    throw new Error('Failed to fetch input data');
+  }
+
   const totalFuelRequirement = parseInput(input).reduce(
     (accFuel, moduleMass) => accFuel + calculateFuelRequirement(moduleMass),
     0,
