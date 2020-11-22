@@ -1,4 +1,4 @@
-import getInput from 'aoc-loader';
+import aocLoader from 'aoc-loader';
 import config from '../../config';
 
 export function runIntcodeProgram(initialMemory: number[]): number[] {
@@ -36,11 +36,7 @@ function parseInput(input: string): number[] {
 }
 
 async function solveDay2Part2(): Promise<void> {
-  const input = await getInput(2019, 2, config.aocSessionCookie);
-
-  if (!input) {
-    throw new Error('Failed to fetch input data');
-  }
+  const input = await aocLoader(2019, 2, config.aocSessionCookie);
 
   const initialMemory = parseInput(input);
 

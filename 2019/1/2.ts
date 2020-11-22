@@ -1,4 +1,4 @@
-import getInput from 'aoc-loader';
+import aocLoader from 'aoc-loader';
 import config from '../../config';
 
 export function calculateFuelRequirement(mass: number): number {
@@ -16,11 +16,7 @@ function parseInput(input: string): number[] {
 }
 
 async function solveDay1Part2(): Promise<void> {
-  const input = await getInput(2019, 1, config.aocSessionCookie);
-
-  if (!input) {
-    throw new Error('Failed to fetch input data');
-  }
+  const input = await aocLoader(2019, 1, config.aocSessionCookie);
 
   const totalFuelRequirement = parseInput(input).reduce(
     (accFuel, moduleMass) => accFuel + calculateFuelRequirement(moduleMass),

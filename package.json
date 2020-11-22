@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/gustavkj/adventofcode#readme",
   "dependencies": {
-    "aoc-loader": "^1.3.0",
+    "aoc-loader": "^1.4.0",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
