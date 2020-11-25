@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "ts-node ./2019/2/2.ts",
+    "start": "ts-node ./2019/3/2.ts",
     "lint": "eslint --ext .js,.ts --quiet .",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "prettier --check .",
