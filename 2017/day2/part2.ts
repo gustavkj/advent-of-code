@@ -1,8 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-
-fs.readFile(path.join(__dirname, './data.txt'), 'utf8', (err, data) => {
-  if (err) throw err;
+export function part2(data: string): number {
   const checksum = data.split('\n').reduce((sum, val) => {
     const row = val.split(/\s/).map((num) => parseInt(num, 10));
     for (let i = 0; i < row.length; i += 1) {
@@ -15,5 +11,5 @@ fs.readFile(path.join(__dirname, './data.txt'), 'utf8', (err, data) => {
     return sum;
   }, 0);
 
-  console.log(checksum); // 233
-});
+  return checksum; // 233
+}

@@ -1,8 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-
-fs.readFile(path.join(__dirname, './data.txt'), 'utf8', function (err, data) {
-  if (err) throw err;
+export function part1(data: string): number {
   const checksum = data.split('\n').reduce((sum, val) => {
     const row = val.split(/\s/).map((num) => parseInt(num, 10));
     const max = row.reduce((maxVal, cur) => Math.max(maxVal, cur));
@@ -10,5 +6,5 @@ fs.readFile(path.join(__dirname, './data.txt'), 'utf8', function (err, data) {
     return sum + max - min;
   }, 0);
 
-  console.log(checksum); // 30994
-});
+  return checksum; // 30994
+}

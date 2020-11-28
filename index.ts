@@ -13,8 +13,8 @@ if (!year && !day) {
 type PartExecuter = (input: string) => string | number;
 
 interface Day {
-  part1: PartExecuter;
-  part2: PartExecuter;
+  part1?: PartExecuter;
+  part2?: PartExecuter;
 }
 
 aocLoader(year, day, config.aocSessionCookie)
