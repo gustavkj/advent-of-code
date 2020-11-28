@@ -1,4 +1,4 @@
-import { getDistanceToClosestIntersection } from './1';
+import { getDistanceToClosestIntersection } from './part1';
 
 describe('2019 - day 3 - part 1', () => {
   describe('getDistanceToClosestIntersection', () => {

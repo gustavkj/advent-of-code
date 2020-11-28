@@ -1,4 +1,4 @@
-import { runIntcodeProgram } from './1';
+import { runIntcodeProgram } from './part1';
 
 describe('2019 - day 2 - part 1', () => {
   describe('runIntcodeProgram', () => {

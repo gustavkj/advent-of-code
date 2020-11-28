@@ -1,4 +1,4 @@
-import { getFewestStepsToIntersection } from './2';
+import { getFewestStepsToIntersection } from './part2';
 
 describe('2019 - day 3 - part 2', () => {
   describe('getFewestStepsToIntersection', () => {

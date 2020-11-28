@@ -1,4 +1,4 @@
-import { calculateFuelRequirement } from './2';
+import { calculateFuelRequirement } from './part2';
 
 describe('2019 - day 1 - part 2', () => {
   describe('calculateNeededFuel', () => {
