@@ -24,7 +24,7 @@ aocLoader(year, day, config.aocSessionCookie)
     if (dayFile.part1) {
       const before = new Date().getTime();
       console.log(`Part 1: ${dayFile.part1(data)}`);
-      console.log(`  Took: ${(new Date().getTime() - before).toFixed(3)} sek`);
+      console.log(`  Took: ${((new Date().getTime() - before) / 1000).toFixed(3)} sek`);
     } else {
       console.log('Missing part 1');
     }
@@ -32,7 +32,7 @@ aocLoader(year, day, config.aocSessionCookie)
     if (dayFile.part2) {
       const before = new Date().getTime();
       console.log(`Part 2: ${dayFile.part2(data)}`);
-      console.log(`  Took: ${(new Date().getTime() - before).toFixed(3)} sek`);
+      console.log(`  Took: ${((new Date().getTime() - before) / 1000).toFixed(3)} sek`);
     } else {
       console.log('Missing part 2');
     }
