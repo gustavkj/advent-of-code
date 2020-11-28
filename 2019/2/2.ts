@@ -1,6 +1,3 @@
-import aocLoader from 'aoc-loader';
-import config from '../../config';
-
 export function runIntcodeProgram(initialMemory: number[]): number[] {
   let currentAddress = 0;
   const memory = [...initialMemory];
@@ -35,9 +32,7 @@ function parseInput(input: string): number[] {
   return input.split(',').map(Number);
 }
 
-async function solveDay2Part2(): Promise<void> {
-  const input = await aocLoader(2019, 2, config.aocSessionCookie);
-
+export function part2(input: string): number {
   const initialMemory = parseInput(input);
 
   let noun = 0;
@@ -60,11 +55,5 @@ async function solveDay2Part2(): Promise<void> {
     initialMemory[2] = verb;
   }
 
-  console.log(100 * noun + verb); // 7014
-}
-
-if (require.main === module) {
-  solveDay2Part2().catch((err) => {
-    console.log('Failed', err);
-  });
+  return 100 * noun + verb; // 7014
 }

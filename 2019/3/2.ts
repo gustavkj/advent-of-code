@@ -1,6 +1,3 @@
-import aocLoader from 'aoc-loader';
-import config from '../../config';
-
 function getXY(node: string): number[] {
   return node.split(',').map(Number);
 }
@@ -51,15 +48,8 @@ function parseInput(input: string): string[][] {
   return input.split('\n').map((row) => row.split(','));
 }
 
-async function solveDay3Part2(): Promise<void> {
-  const input = await aocLoader(2019, 3, config.aocSessionCookie);
+export function part2(input: string): number {
   const wireSpecs = parseInput(input);
 
-  console.log(getFewestStepsToIntersection(wireSpecs)); // 21196
-}
-
-if (require.main === module) {
-  solveDay3Part2().catch((err) => {
-    console.log('Failed', err);
-  });
+  return getFewestStepsToIntersection(wireSpecs); // 21196
 }

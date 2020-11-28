@@ -1,6 +1,3 @@
-import aocLoader from 'aoc-loader';
-import config from '../../config';
-
 export function runIntcodeProgram(intcodeProgram: number[]): number[] {
   let cursor = 0;
   const intcodes = [...intcodeProgram];
@@ -33,20 +30,12 @@ function parseInput(input: string): number[] {
   return input.split(',').map(Number);
 }
 
-async function solveDay2Part1(): Promise<void> {
-  const input = await aocLoader(2019, 2, config.aocSessionCookie);
-
+export function part1(input: string): number {
   const intcodeProgram = parseInput(input);
 
   // Before running the program, replace position 1 with the value 12 and replace position 2 with the value 2
   intcodeProgram[1] = 12;
   intcodeProgram[2] = 2;
 
-  console.log(runIntcodeProgram(intcodeProgram)[0]); // 3654868
-}
-
-if (require.main === module) {
-  solveDay2Part1().catch((err) => {
-    console.log('Failed', err);
-  });
+  return runIntcodeProgram(intcodeProgram)[0]; // 3654868
 }

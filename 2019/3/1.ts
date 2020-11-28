@@ -53,15 +53,8 @@ function parseInput(input: string): string[][] {
   return input.split('\n').map((row) => row.split(','));
 }
 
-async function solveDay3Part1(): Promise<void> {
-  const input = await aocLoader(2019, 3, config.aocSessionCookie);
+export function part1(input: string): number {
   const wireSpecs = parseInput(input);
 
-  console.log(getDistanceToClosestIntersection(wireSpecs)); // 207
-}
-
-if (require.main === module) {
-  solveDay3Part1().catch((err) => {
-    console.log('Failed', err);
-  });
+  return getDistanceToClosestIntersection(wireSpecs); // 207
 }

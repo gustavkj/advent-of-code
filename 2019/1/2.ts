@@ -1,6 +1,3 @@
-import aocLoader from 'aoc-loader';
-import config from '../../config';
-
 export function calculateFuelRequirement(mass: number): number {
   const fuel = Math.floor(mass / 3) - 2;
 
@@ -15,19 +12,11 @@ function parseInput(input: string): number[] {
   return input.split('\n').map(Number);
 }
 
-async function solveDay1Part2(): Promise<void> {
-  const input = await aocLoader(2019, 1, config.aocSessionCookie);
-
+export function part2(input: string): number {
   const totalFuelRequirement = parseInput(input).reduce(
     (accFuel, moduleMass) => accFuel + calculateFuelRequirement(moduleMass),
     0,
   );
 
-  console.log(totalFuelRequirement); // 5105597
-}
-
-if (require.main === module) {
-  solveDay1Part2().catch(() => {
-    console.log('Failed');
-  });
+  return totalFuelRequirement; // 5105597
 }
