@@ -1,6 +1,3 @@
-import aocLoader from 'aoc-loader';
-import config from '../../config';
-
 function getXY(node: string): number[] {
   return node.split(',').map(Number);
 }

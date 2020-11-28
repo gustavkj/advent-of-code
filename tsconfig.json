@@ -12,5 +12,5 @@
     "allowJs": true,
     "outDir": "dist"
   },
-  "include": ["**/*.ts", "**/*.js", ".eslintrc.js"]
+  "include": ["src", ".eslintrc.js", ".prettierrc.js", "jest.config.js"]
 }
