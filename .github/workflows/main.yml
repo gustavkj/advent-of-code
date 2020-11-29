@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    name: Tests and Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+      - name: Use Node.js (.nvmrc)
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test
+      - name: Run Linter
+        run: npm run lint
+      - name: Run Prettier
+        run: npm run prettier
+      - name: Run Typechecker
+        run: npm run typecheck
