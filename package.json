@@ -14,18 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gustavkj/adventofcode.git"
+    "url": "git+https://github.com/gustavkj/advent-of-code.git"
   },
   "author": "Gustav Utterheim <gustav@utterheim.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gustavkj/adventofcode/issues"
+    "url": "https://github.com/gustavkj/advent-of-code/issues"
   },
   "engines": {
     "node": "^14.15.1",
     "npm": "^6.14.8"
   },
-  "homepage": "https://github.com/gustavkj/adventofcode#readme",
+  "homepage": "https://github.com/gustavkj/advent-of-code#readme",
   "dependencies": {
     "aoc-loader": "1.4.1",
     "dotenv": "8.2.0"
