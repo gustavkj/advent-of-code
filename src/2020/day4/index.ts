@@ -13,11 +13,13 @@ type PassportKey = keyof Passport;
 
 const passportKeys = <const>['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid', 'cid'];
 
+type ValidFieldFunction = (key: string, value: string) => boolean;
+
 function isPassportKey(x: unknown): x is PassportKey {
   return typeof x === 'string' && passportKeys.includes(x as PassportKey);
 }
 
-function parseInput(input: string) {
+function parseInput(input: string, isValid: ValidFieldFunction = () => true) {
   return input.split('\n\n').map((passportEntry) => {
     const passport: Passport = {};
 
@@ -27,28 +29,13 @@ function parseInput(input: string) {
       .forEach((field) => {
         const [key, value] = field.split(':');
 
-        if (isPassportKey(key)) {
+        if (isPassportKey(key) && isValid(key, value)) {
           passport[key] = value;
         }
       });
 
     return passport;
   });
-}
-
-function isValidPart1(passport: Passport): boolean {
-  // Do not include `cid`
-  const requiredKeys = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'];
-
-  const keys = Object.keys(passport);
-
-  return requiredKeys.every((key) => keys.includes(key));
-}
-
-export function part1(input: string): number {
-  const passports = parseInput(input);
-
-  return passports.filter(isValidPart1).length; // 264
 }
 
 function isValidYear(value: string, min: number, max: number) {
@@ -104,19 +91,23 @@ export function isValidField(key: string, value: string): boolean {
   }
 }
 
-function isValidPart2(passport: Passport): boolean {
+function hasAllPassportFields(passport: Passport): boolean {
   // Do not include `cid`
-  const requiredKeys: PassportKey[] = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'];
+  const requiredKeys = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'];
 
   const keys = Object.keys(passport);
 
-  return requiredKeys.every(
-    (key) => keys.includes(key) && isValidField(key, passport[key] as string),
-  );
+  return requiredKeys.every((key) => keys.includes(key));
+}
+
+export function part1(input: string): number {
+  const passports = parseInput(input);
+
+  return passports.filter(hasAllPassportFields).length; // 264
 }
 
 export function part2(input: string): number {
-  const passports = parseInput(input);
+  const passports = parseInput(input, isValidField);
 
-  return passports.filter(isValidPart2).length; // 224
+  return passports.filter(hasAllPassportFields).length; // 224
 }
