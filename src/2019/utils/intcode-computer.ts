@@ -14,14 +14,18 @@ export class IntcodeComputer {
 
   private mode: MODE[] = [0, 0, 0];
 
+  private hasJumped = false;
+
   constructor(initialMemory: number[] = []) {
     this.internalMemory = [...initialMemory];
     this.currentAddress = 0;
+    this.hasJumped = false;
   }
 
   reset(memory: number[]): void {
     this.internalMemory = [...memory];
     this.currentAddress = 0;
+    this.hasJumped = false;
   }
 
   set memory(memory: number[]) {
@@ -86,8 +90,42 @@ export class IntcodeComputer {
     this.nextIncrement = 2;
   }
 
+  private jumpIfTrue(): void {
+    if (this.getValue(1) !== 0) {
+      this.currentAddress = this.getValue(2);
+      this.hasJumped = true;
+    }
+
+    this.nextIncrement = 3;
+  }
+
+  private jumpIfFalse(): void {
+    if (this.getValue(1) === 0) {
+      this.currentAddress = this.getValue(2);
+      this.hasJumped = true;
+    }
+
+    this.nextIncrement = 3;
+  }
+
   private increment(): void {
-    this.currentAddress += this.nextIncrement;
+    if (this.hasJumped) {
+      this.hasJumped = false;
+    } else {
+      this.currentAddress += this.nextIncrement;
+    }
+  }
+
+  private lessThan(): void {
+    this.set(this.getAddress(3), this.getValue(1) < this.getValue(2) ? 1 : 0);
+
+    this.nextIncrement = 4;
+  }
+
+  private equals(): void {
+    this.set(this.getAddress(3), this.getValue(1) === this.getValue(2) ? 1 : 0);
+
+    this.nextIncrement = 4;
   }
 
   private setMode(modes: number[]) {
@@ -122,6 +160,22 @@ export class IntcodeComputer {
 
       case 4:
         this.output();
+        break;
+
+      case 5:
+        this.jumpIfTrue();
+        break;
+
+      case 6:
+        this.jumpIfFalse();
+        break;
+
+      case 7:
+        this.lessThan();
+        break;
+
+      case 8:
+        this.equals();
         break;
 
       case 99:
