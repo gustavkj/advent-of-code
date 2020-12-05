@@ -1,32 +1,4 @@
-export function runIntcodeProgram(initialMemory: number[]): number[] {
-  let currentAddress = 0;
-  const memory = [...initialMemory];
-
-  function add(address: number) {
-    memory[memory[address + 3]] = memory[memory[address + 1]] + memory[memory[address + 2]];
-  }
-
-  function multiply(address: number) {
-    memory[memory[address + 3]] = memory[memory[address + 1]] * memory[memory[address + 2]];
-  }
-
-  while (memory[currentAddress] !== 99) {
-    if (memory[currentAddress] === 1) {
-      add(currentAddress);
-    } else if (memory[currentAddress] === 2) {
-      multiply(currentAddress);
-    } else {
-      throw new Error(
-        `Unknown Opcode: ${
-          memory[currentAddress]
-        } as address ${currentAddress}.\n\n${JSON.stringify(memory)}`,
-      );
-    }
-    currentAddress += 4;
-  }
-
-  return memory;
-}
+import { IntcodeComputer } from '../utils/intcode-computer';
 
 function parseInput(input: string): number[] {
   return input.split(',').map(Number);
@@ -41,7 +13,9 @@ export function part2(input: string): number {
   initialMemory[1] = noun;
   initialMemory[2] = verb;
 
-  while (runIntcodeProgram(initialMemory)[0] !== 19690720) {
+  const computer = new IntcodeComputer(initialMemory);
+
+  while (computer.run()[0] !== 19690720) {
     if (noun === 99 && verb === 99) {
       throw new Error('Maxed out');
     } else if (noun === 99) {
@@ -53,6 +27,7 @@ export function part2(input: string): number {
 
     initialMemory[1] = noun;
     initialMemory[2] = verb;
+    computer.reset(initialMemory);
   }
 
   return 100 * noun + verb; // 7014
