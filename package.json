@@ -28,10 +28,12 @@
   "homepage": "https://github.com/gustavkj/advent-of-code#readme",
   "dependencies": {
     "aoc-loader": "1.4.1",
-    "dotenv": "8.2.0"
+    "dotenv": "8.2.0",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "@types/jest": "26.0.16",
+    "@types/readline-sync": "^1.4.3",
     "@typescript-eslint/eslint-plugin": "4.9.0",
     "@typescript-eslint/parser": "4.9.0",
     "eslint": "7.14.0",
