@@ -1,8 +1,6 @@
 export function part2(data: string): number {
   const noValid = data.split('\n').reduce((sum, passphrase) => {
-    const words = passphrase.split(/\s/).map((word) => {
-      return word.split('').sort().join('');
-    });
+    const words = passphrase.split(/\s/).map((word) => word.split('').sort().join(''));
 
     for (let i = 0; i < words.length - 1; i += 1) {
       for (let k = i + 1; k < words.length; k += 1) {

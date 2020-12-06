@@ -8,12 +8,13 @@ export function isValid(password: number): boolean {
     return false;
   }
 
-  const digitMap = passwordArray.reduce((map, v) => {
-    return {
+  const digitMap = passwordArray.reduce(
+    (map, v) => ({
       ...map,
       [v]: (map[v] ?? 0) + 1,
-    };
-  }, {} as Record<string, number>);
+    }),
+    {} as Record<string, number>,
+  );
 
   // Two adjacent digits are the same (like 22 in 122345).
   if (!Object.values(digitMap).includes(2)) {

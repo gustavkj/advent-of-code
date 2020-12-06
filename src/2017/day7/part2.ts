@@ -85,9 +85,7 @@ export function part2(data: string): number {
     if (disc.childKeys.length !== 0) {
       // eslint-disable-next-line no-param-reassign
       disc.children = disc.childKeys.map((childKey) => {
-        const childIndex = arr.findIndex((element) => {
-          return element.key === childKey;
-        });
+        const childIndex = arr.findIndex((element) => element.key === childKey);
 
         // eslint-disable-next-line no-param-reassign
         arr[childIndex].hasParent = true;
