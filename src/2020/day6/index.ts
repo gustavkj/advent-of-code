@@ -20,7 +20,7 @@ function countCommon(group: string[][]) {
     commonAnswers[answer] = (commonAnswers[answer] ?? 0) + 1;
   });
 
-  return Object.keys(commonAnswers).filter((key) => commonAnswers[key] === group.length).length;
+  return Object.values(commonAnswers).filter((count) => count === group.length).length;
 }
 
 export function part2(input: string): number {
