@@ -7,12 +7,10 @@ export function part1(data: string): number {
     preComb.push(banks.join(''));
 
     const max = banks.reduce(
-      (maxNode, curVal, curInd) => {
-        return {
-          val: Math.max(maxNode.val, curVal),
-          ind: curVal > maxNode.val ? curInd : maxNode.ind,
-        };
-      },
+      (maxNode, curVal, curInd) => ({
+        val: Math.max(maxNode.val, curVal),
+        ind: curVal > maxNode.val ? curInd : maxNode.ind,
+      }),
       { val: 0, ind: 0 },
     );
 

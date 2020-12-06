@@ -44,9 +44,7 @@ export function part2(input: string): number {
   const seatIDs = input.split('\n').map(getSeatID);
 
   const [mySeatID] = seatIDs
-    .filter((seatID) => {
-      return seatIDs.includes(seatID + 2) && !seatIDs.includes(seatID + 1);
-    })
+    .filter((seatID) => seatIDs.includes(seatID + 2) && !seatIDs.includes(seatID + 1))
     .map((seatID) => seatID + 1);
 
   return mySeatID; // 515

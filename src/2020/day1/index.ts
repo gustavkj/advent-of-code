@@ -28,8 +28,8 @@ export function part2(input: string): number {
 
   let product = 0;
 
-  expenses.some((expense1, i) => {
-    return expenses.slice(i + 1).some((expense2) => {
+  expenses.some((expense1, i) =>
+    expenses.slice(i + 1).some((expense2) => {
       const numberOfInterest = 2020 - expense1 - expense2;
 
       if (numberOfInterest < 0) {
@@ -42,8 +42,8 @@ export function part2(input: string): number {
       }
 
       return false;
-    });
-  });
+    }),
+  );
 
   return product; // 182588480
 }
