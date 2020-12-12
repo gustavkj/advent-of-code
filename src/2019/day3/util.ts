@@ -1,4 +1,4 @@
-import { Point } from './types';
+import { Point } from '../../types';
 
 /** Defines where the wires start. */
 export const startPoint: Point = { x: 0, y: 0 };
