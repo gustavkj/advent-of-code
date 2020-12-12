@@ -1,3 +1,12 @@
 {
-  "extends": ["config:base"]
+  "extends": [
+    "config:base",
+    ":dependencyDashboard",
+    ":prNotPending",
+    ":label(dependencies)",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    ":timezone(Europe/Stockholm)",
+    "schedule:weekly"
+  ],
+  "stabilityDays": 3
 }
