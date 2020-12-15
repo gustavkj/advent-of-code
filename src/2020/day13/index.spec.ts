@@ -11,37 +11,37 @@ describe('2020 day 13', () => {
 
   describe('part 2', () => {
     it('should return the earliest timestamp such that all of the listed bus IDs depart at offsets matching their positions in the list', () => {
-      expect(part2(input)).toEqual(1068781);
+      expect(part2(input)).toEqual(1068781n);
     });
 
     it('should return the earliest timestamp such that all of the listed bus IDs depart at offsets matching their positions in the list, case 1', () => {
       const input1 = ['0', '17,x,13,19'].join('\n');
 
-      expect(part2(input1)).toEqual(3417);
+      expect(part2(input1)).toEqual(3417n);
     });
 
     it('should return the earliest timestamp such that all of the listed bus IDs depart at offsets matching their positions in the list, case 2', () => {
       const input2 = ['0', '67,7,59,61'].join('\n');
 
-      expect(part2(input2)).toEqual(754018);
+      expect(part2(input2)).toEqual(754018n);
     });
 
     it('should return the earliest timestamp such that all of the listed bus IDs depart at offsets matching their positions in the list, case 3', () => {
       const input3 = ['0', '67,x,7,59,61'].join('\n');
 
-      expect(part2(input3)).toEqual(779210);
+      expect(part2(input3)).toEqual(779210n);
     });
 
     it('should return the earliest timestamp such that all of the listed bus IDs depart at offsets matching their positions in the list, case 4', () => {
       const input4 = ['0', '67,7,x,59,61'].join('\n');
 
-      expect(part2(input4)).toEqual(1261476);
+      expect(part2(input4)).toEqual(1261476n);
     });
 
     it('should return the earliest timestamp such that all of the listed bus IDs depart at offsets matching their positions in the list, case 5', () => {
       const input5 = ['0', '1789,37,47,1889'].join('\n');
 
-      expect(part2(input5)).toEqual(1202161486);
+      expect(part2(input5)).toEqual(1202161486n);
     });
   });
 });
