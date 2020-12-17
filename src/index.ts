@@ -19,7 +19,7 @@ interface Day {
 
 aocLoader(year, day, config.aocSessionCookie)
   .then(async (data) => {
-    const dayFile = (await import(`./${year}/day${day}`)) as Day;
+    const dayFile = (await import(`./${year}/day${day.toString().padStart(2, '0')}`)) as Day;
 
     if (dayFile.part1) {
       const before = new Date().getTime();
