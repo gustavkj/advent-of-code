@@ -1,4 +1,5 @@
 import { Point } from '../../types';
+import { toKey, toPoint } from '../../utils';
 
 const deltas: Record<string, Point> = {
   ne: { x: 0.5, y: 0.5 },
@@ -17,10 +18,6 @@ function getDelta(direction: string): Point {
   }
 
   return delta;
-}
-
-function pointToString({ x, y }: Point) {
-  return `${x},${y}`;
 }
 
 function getStartingState(input: string) {
@@ -51,7 +48,7 @@ function getStartingState(input: string) {
       return tile;
     })
     .forEach((tile) => {
-      const key = pointToString(tile);
+      const key = toKey(tile);
       const currentState = flippedTiles.get(key) ?? false;
       flippedTiles.set(key, !currentState);
     });
@@ -80,14 +77,8 @@ function getNeighborsCoordinates(tile: Point) {
 
 function getActiveNeighbors(tile: Point, flippedTiles: Map<string, boolean>) {
   return getNeighborsCoordinates(tile)
-    .map((neighborTile) => flippedTiles.get(pointToString(neighborTile)) ?? false)
+    .map((neighborTile) => flippedTiles.get(toKey(neighborTile)) ?? false)
     .filter(Boolean).length;
-}
-
-function stringToPoint(value: string): Point {
-  const [x, y] = value.split(',').map(Number);
-
-  return { x, y };
 }
 
 export function part2(input: string): number {
@@ -97,13 +88,13 @@ export function part2(input: string): number {
   while (day <= 100) {
     const coordsToGoThrough = new Set(
       [...flippedTiles.keys()]
-        .map(stringToPoint)
+        .map(toPoint)
         .flatMap((tile) => [tile, ...getNeighborsCoordinates(tile)]),
     );
     const currentState = new Map(flippedTiles);
 
     coordsToGoThrough.forEach((tile) => {
-      const key = pointToString(tile);
+      const key = toKey(tile);
       const isFlipped = currentState.get(key) ?? false;
 
       const activeNeighbors = getActiveNeighbors(tile, currentState);

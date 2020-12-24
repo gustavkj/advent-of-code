@@ -1,18 +1,8 @@
 import { Point } from '../../types';
+import { toKey } from '../../utils';
 
 /** Defines where the wires start. */
 export const startPoint: Point = { x: 0, y: 0 };
-
-export function toPoint(key: string): Point {
-  const [x, y] = key.split(',').map(Number);
-  return { x, y };
-}
-
-export function toKey(point: Point): string {
-  const { x, y } = point;
-
-  return `${x},${y}`;
-}
 
 export function parseInput(input: string): string[][] {
   return input.split('\n').map((row) => row.split(','));

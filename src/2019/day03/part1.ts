@@ -1,5 +1,5 @@
-import { getManhattanDistance } from '../../utils/get-manhattan-distance';
-import { getIntersections, parseInput, startPoint, toPoint } from './util';
+import { getManhattanDistance, toPoint } from '../../utils';
+import { getIntersections, parseInput, startPoint } from './util';
 
 export function getDistanceToClosestIntersection(wirePaths: string[][]): number {
   const intersections = getIntersections(wirePaths);

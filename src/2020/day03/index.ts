@@ -1,16 +1,14 @@
-interface XY {
-  x: number;
-  y: number;
-}
+import { Point } from '../../types';
+import { toKey } from '../../utils';
 
-function parseInput(input: string): { treeMap: Map<string, boolean>; dimensions: XY } {
+function parseInput(input: string): { treeMap: Map<string, boolean>; dimensions: Point } {
   const treeMap = new Map<string, boolean>();
   const rows = input.split('\n');
 
   rows.forEach((row, y) => {
     [...row].forEach((cell, x) => {
       if (cell === '#') {
-        treeMap.set(`${x},${y}`, true);
+        treeMap.set(toKey({ x, y }), true);
       }
     });
   });
@@ -18,8 +16,8 @@ function parseInput(input: string): { treeMap: Map<string, boolean>; dimensions:
   return { treeMap, dimensions: { x: rows[0].length, y: rows.length } };
 }
 
-function traverseUntilBottom(treeMap: Map<string, boolean>, dimensions: XY, delta: XY) {
-  const curPos: XY = { x: 0, y: 0 };
+function traverseUntilBottom(treeMap: Map<string, boolean>, dimensions: Point, delta: Point) {
+  const curPos: Point = { x: 0, y: 0 };
 
   let treesEncountered = 0;
 
@@ -27,7 +25,7 @@ function traverseUntilBottom(treeMap: Map<string, boolean>, dimensions: XY, delt
     curPos.x = (curPos.x + delta.x) % dimensions.x;
     curPos.y += delta.y;
 
-    treesEncountered += treeMap.has(`${curPos.x},${curPos.y}`) ? 1 : 0;
+    treesEncountered += treeMap.has(toKey(curPos)) ? 1 : 0;
   }
 
   return treesEncountered;
@@ -42,7 +40,7 @@ export function part1(input: string): number {
 export function part2(input: string): number {
   const { treeMap, dimensions } = parseInput(input);
 
-  const slopes: XY[] = [
+  const slopes: Point[] = [
     { x: 1, y: 1 },
     { x: 3, y: 1 },
     { x: 5, y: 1 },

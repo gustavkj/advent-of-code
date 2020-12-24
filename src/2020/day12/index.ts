@@ -1,5 +1,5 @@
 import { Point } from '../../types';
-import { getManhattanDistance } from '../../utils/get-manhattan-distance';
+import { getManhattanDistance } from '../../utils';
 
 const directions = <const>['E', 'N', 'W', 'S'];
 
