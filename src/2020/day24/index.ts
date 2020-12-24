@@ -97,13 +97,13 @@ export function part2(input: string): number {
       const key = toKey(tile);
       const isFlipped = currentState.get(key) ?? false;
 
-      const activeNeighbors = getActiveNeighbors(tile, currentState);
+      const numberOfFlippedNeighbors = getActiveNeighbors(tile, currentState);
 
-      if (isFlipped && activeNeighbors > 2) {
+      if (isFlipped && numberOfFlippedNeighbors > 2) {
         flippedTiles.set(key, false);
-      } else if (!isFlipped && activeNeighbors === 2) {
+      } else if (!isFlipped && numberOfFlippedNeighbors === 2) {
         flippedTiles.set(key, true);
-      } else if (activeNeighbors === 0) {
+      } else if (numberOfFlippedNeighbors === 0) {
         flippedTiles.delete(key);
       }
     });
