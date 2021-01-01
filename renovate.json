@@ -6,7 +6,10 @@
     ":label(dependencies)",
     ":enableVulnerabilityAlertsWithLabel(security)",
     ":timezone(Europe/Stockholm)",
-    "schedule:weekly"
+    "schedule:weekly",
+    ":automergePr",
+    ":automergeLinters",
+    ":automergeTesters"
   ],
   "stabilityDays": 3
 }
