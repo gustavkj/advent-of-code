@@ -9,6 +9,7 @@ describe('2020 day 15', () => {
   });
 
   // This will take a lot of time
+  // eslint-disable-next-line jest/no-disabled-tests
   describe.skip('part 2', () => {
     it('should return the 30000000th number spoken', () => {
       expect(part2(input1)).toEqual(175594);
