@@ -10,7 +10,8 @@
     "prettier:fix": "prettier --write .",
     "typecheck": "tsc --incremental false --noEmit",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -42,18 +43,13 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jest": "25.3.0",
-    "husky": "4.3.8",
+    "husky": "7.0.4",
     "jest": "27.4.3",
     "lint-staged": "12.1.2",
     "prettier": "2.5.0",
     "ts-jest": "27.0.7",
     "ts-node": "10.4.0",
     "typescript": "4.5.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{js,ts}": [
