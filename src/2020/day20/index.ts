@@ -164,7 +164,7 @@ export function part2(input: string): number {
     .map(([tileId]) => Number(tileId));
 
   const [edgeRow, edgeCol] = Object.entries(tiles[cornerID].neighbors).map(([, neighborID]) => {
-    let nextId: number | undefined = neighborID as number;
+    let nextId: number | undefined = neighborID;
     let prevId = cornerID;
     const cells: number[] = [prevId];
 
@@ -186,7 +186,7 @@ export function part2(input: string): number {
     }
 
     let nextId: number | undefined = Object.values(tiles[edgeId].neighbors).find(
-      (neighborId) => ![array[i + 1], array[i - 1]].includes(neighborId as number),
+      (neighborId) => ![array[i + 1], array[i - 1]].includes(neighborId),
     );
     let prevId = edgeId;
     const cells: number[] = [prevId];
