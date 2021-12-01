@@ -61,25 +61,23 @@ function balanceDisc(disc: BalancedDisc) {
 export function part2(data: string): number {
   const rows = data.split('\n');
 
-  const discs = rows.map(
-    (row): BalancedDisc => {
-      const matches = /([a-z]*)\s\(([0-9]*)\)(?:\s->\s((?:[a-z]*(?:,\s)?)*))?/.exec(row);
+  const discs = rows.map((row): BalancedDisc => {
+    const matches = /([a-z]*)\s\(([0-9]*)\)(?:\s->\s((?:[a-z]*(?:,\s)?)*))?/.exec(row);
 
-      if (!matches) {
-        throw new Error(`Faulty row ${row}`);
-      }
+    if (!matches) {
+      throw new Error(`Faulty row ${row}`);
+    }
 
-      return {
-        key: matches[1],
-        weight: Number(matches[2]),
-        children: [],
-        childKeys: typeof matches[3] !== 'undefined' ? matches[3].split(', ') : [],
-        hasParent: false,
-        isBalanced: false,
-        totalWeight: 0,
-      };
-    },
-  );
+    return {
+      key: matches[1],
+      weight: Number(matches[2]),
+      children: [],
+      childKeys: typeof matches[3] !== 'undefined' ? matches[3].split(', ') : [],
+      hasParent: false,
+      isBalanced: false,
+      totalWeight: 0,
+    };
+  });
 
   discs.forEach((disc, i, arr) => {
     if (disc.childKeys.length !== 0) {

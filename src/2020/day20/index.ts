@@ -54,60 +54,58 @@ function parseInput(input: string) {
 
   input
     .split('\n\n')
-    .map(
-      (tileBlock): Tile => {
-        const [tileIdRow, ...tileRows] = tileBlock.split('\n');
+    .map((tileBlock): Tile => {
+      const [tileIdRow, ...tileRows] = tileBlock.split('\n');
 
-        const match = /Tile (\d+):/.exec(tileIdRow);
+      const match = /Tile (\d+):/.exec(tileIdRow);
 
-        if (!match) {
-          throw new Error(`Failed to parse tile ID row: ${tileIdRow}`);
-        }
+      if (!match) {
+        throw new Error(`Failed to parse tile ID row: ${tileIdRow}`);
+      }
 
-        const id = Number(match[1]);
-        let northEdge = '';
-        let southEdge = '';
-        let westEdge = '';
-        let eastEdge = '';
-        const content: string[][] = [];
+      const id = Number(match[1]);
+      let northEdge = '';
+      let southEdge = '';
+      let westEdge = '';
+      let eastEdge = '';
+      const content: string[][] = [];
 
-        tileRows
-          .map((row) => row.split(''))
-          .forEach((row, rowIndex, rowsArray) => {
-            if (rowIndex === 0) {
-              northEdge = row.join('');
+      tileRows
+        .map((row) => row.split(''))
+        .forEach((row, rowIndex, rowsArray) => {
+          if (rowIndex === 0) {
+            northEdge = row.join('');
+          }
+          if (rowIndex === rowsArray.length - 1) {
+            southEdge = row.join('');
+          }
+          if (![0, rowsArray.length - 1].includes(rowIndex)) {
+            content.push(row.slice(1, -1));
+          }
+
+          row.forEach((cell, cellIndex) => {
+            if (cellIndex === 0) {
+              westEdge += cell;
             }
-            if (rowIndex === rowsArray.length - 1) {
-              southEdge = row.join('');
+            if (cellIndex === row.length - 1) {
+              eastEdge += cell;
             }
-            if (![0, rowsArray.length - 1].includes(rowIndex)) {
-              content.push(row.slice(1, -1));
-            }
-
-            row.forEach((cell, cellIndex) => {
-              if (cellIndex === 0) {
-                westEdge += cell;
-              }
-              if (cellIndex === row.length - 1) {
-                eastEdge += cell;
-              }
-            });
           });
+        });
 
-        return {
-          id,
-          edges: {
-            north: northEdge,
-            south: southEdge,
-            west: westEdge,
-            east: eastEdge,
-          },
-          content,
-          neighborsList: new Set<number>(),
-          neighbors: {},
-        };
-      },
-    )
+      return {
+        id,
+        edges: {
+          north: northEdge,
+          south: southEdge,
+          west: westEdge,
+          east: eastEdge,
+        },
+        content,
+        neighborsList: new Set<number>(),
+        neighbors: {},
+      };
+    })
     .forEach((tile) => {
       tiles[tile.id] = tile;
       Object.values(tile.edges).forEach((edge) => {
@@ -354,8 +352,9 @@ export function part2(input: string): number {
 
   // console.log(imageToCheck.reduce((output, row) => `${output + row.join('')}\n`, ''));
 
-  const numberOfPoundSigns = imageToCheck.flatMap((row) => row.filter((cell) => cell === '#'))
-    .length;
+  const numberOfPoundSigns = imageToCheck.flatMap((row) =>
+    row.filter((cell) => cell === '#'),
+  ).length;
 
   // 1649
   return numberOfPoundSigns;
