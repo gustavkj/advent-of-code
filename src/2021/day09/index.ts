@@ -1,14 +1,4 @@
-function parseInput(input: string) {
-  const rows = input.split('\n');
-
-  return {
-    heightMap: new Map(
-      rows.flatMap((row, y) => row.split('').map((height, x) => [`${x},${y}`, Number(height)])),
-    ),
-    rowCount: rows.length,
-    colCount: rows[0].length,
-  };
-}
+import { inputToNumberMap } from '../utils';
 
 function isLowPoint(heightMap: Map<string, number>, x: number, y: number) {
   const currentHeight = heightMap.get(`${x},${y}`);
@@ -24,7 +14,7 @@ function isLowPoint(heightMap: Map<string, number>, x: number, y: number) {
 }
 
 export function part1(input: string): number {
-  const { heightMap, rowCount, colCount } = parseInput(input);
+  const { map: heightMap, rowCount, colCount } = inputToNumberMap(input);
 
   const lowPoints: string[] = [];
 
@@ -69,7 +59,7 @@ function getNonNineNeighbors(
 }
 
 export function part2(input: string): number {
-  const { heightMap, rowCount, colCount } = parseInput(input);
+  const { map: heightMap, rowCount, colCount } = inputToNumberMap(input);
 
   const visitedPoints = new Set<string>();
 
