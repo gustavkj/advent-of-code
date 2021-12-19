@@ -1,4 +1,4 @@
-import { Point } from '../types';
+import { Falsy, Point } from '../types';
 
 export function getManhattanDistance(pointA: Point, pointB: Point): number {
   const { x: x1, y: y1 } = pointA;
@@ -16,4 +16,8 @@ export function toKey(point: Point): string {
   const { x, y } = point;
 
   return `${x},${y}`;
+}
+
+export function isTruthy<T>(x: T | Falsy): x is T {
+  return Boolean(x);
 }
