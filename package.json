@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/gustavkj/advent-of-code#readme",
   "dependencies": {
-    "aoc-loader": "1.4.3",
+    "aoc-loader": "1.4.4",
     "dotenv": "10.0.0",
     "readline-sync": "1.4.10"
   },
