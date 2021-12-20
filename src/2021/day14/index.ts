@@ -1,59 +1,61 @@
 function parseInput(input: string) {
-  const [templateInput, rulesInput] = input.split('\n\n');
-  const template = templateInput.split('');
-  const rules = Object.fromEntries(
-    rulesInput.split('\n').map((row) => row.split(' -> ') as [string, string]),
-  );
+  const [template, rulesInput] = input.split('\n\n');
+  const rules = new Map(rulesInput.split('\n').map((row) => row.split(' -> ') as [string, string]));
 
   return { template, rules };
 }
 
-function getPolymerAfterNthIteration(template: string[], rules: Record<string, string>, n: number) {
-  let polymer = template;
+function getResultAfterNthIteration(template: string, rules: Map<string, string>, n: number) {
+  let polymerPairs = new Map<string, number>();
+  const occurrences = new Map<string, number>();
+
+  for (let index = 0; index < template.length - 1; index += 1) {
+    const polymerPair = template[index] + template[index + 1];
+    occurrences.set(template[index], (occurrences.get(template[index]) ?? 0) + 1);
+    const numberOfPairs = polymerPairs.get(polymerPair);
+
+    polymerPairs.set(polymerPair, (numberOfPairs ?? 0) + 1);
+  }
+  occurrences.set(template.slice(-1), (occurrences.get(template.slice(-1)) ?? 0) + 1);
+
   for (let step = 0; step < n; step += 1) {
-    const nextTemplate: string[] = [];
+    const nextPolymerPairs = new Map<string, number>();
 
-    for (let index = 0; index < polymer.length - 1; index += 1) {
-      const pair = polymer[index] + polymer[index + 1];
-      const middle = rules[pair];
+    polymerPairs.forEach((numberOfPairs, polymerPair) => {
+      const middle = rules.get(polymerPair) as string;
+      const newPairFront = polymerPair[0] + middle;
+      const newPairBack = middle + polymerPair[1];
 
-      nextTemplate.push(polymer[index], middle);
-    }
+      const frontNumber = nextPolymerPairs.get(newPairFront);
+      const backNumber = nextPolymerPairs.get(newPairBack);
 
-    nextTemplate.push(...polymer.slice(-1));
-    polymer = nextTemplate;
+      nextPolymerPairs.set(newPairFront, (frontNumber ?? 0) + numberOfPairs);
+      nextPolymerPairs.set(newPairBack, (backNumber ?? 0) + numberOfPairs);
+
+      occurrences.set(middle, (occurrences.get(middle) ?? 0) + numberOfPairs);
+    });
+
+    polymerPairs = nextPolymerPairs;
   }
 
-  return polymer;
-}
+  const values = [...occurrences.values()];
 
-function getMostLeastCommonSubtraction(polymer: string[]): number {
-  const occurrences: Record<string, number> = {};
+  const mostCommon = Math.max(...values);
+  const leastCommon = Math.min(...values);
 
-  polymer.forEach((letter) => {
-    occurrences[letter] = (occurrences[letter] ?? 0) + 1;
-  });
-
-  const letters = Object.keys(occurrences);
-  let mostCommon = letters[0];
-  let leastCommon = letters[0];
-
-  for (let index = 1; index < letters.length; index += 1) {
-    const letter = letters[index];
-
-    if (occurrences[letter] > occurrences[mostCommon]) {
-      mostCommon = letter;
-    }
-    if (occurrences[letter] < occurrences[leastCommon]) {
-      leastCommon = letter;
-    }
-  }
-
-  return occurrences[mostCommon] - occurrences[leastCommon];
+  return mostCommon - leastCommon;
 }
 
 export function part1(input: string): number {
   const { template, rules } = parseInput(input);
-  const polymer = getPolymerAfterNthIteration(template, rules, 10);
-  return getMostLeastCommonSubtraction(polymer);
+  const result = getResultAfterNthIteration(template, rules, 10);
+
+  return result;
+}
+
+export function part2(input: string): number {
+  const { template, rules } = parseInput(input);
+  const result = getResultAfterNthIteration(template, rules, 40);
+
+  return result;
 }

@@ -1,4 +1,4 @@
-import { part1 } from '.';
+import { part1, part2 } from '.';
 
 const input = [
   'NNCB',
@@ -25,6 +25,12 @@ describe('2021 day 14', () => {
   describe('part 1 - 10 steps', () => {
     it('should return what result based on the quantity of the most common element and subtract the quantity of the least common element', () => {
       expect(part1(input)).toBe(1588);
+    });
+  });
+
+  describe('part 2 - 40 steps', () => {
+    it('should return what result based on the quantity of the most common element and subtract the quantity of the least common element', () => {
+      expect(part2(input)).toBe(2188189693529);
     });
   });
 });
