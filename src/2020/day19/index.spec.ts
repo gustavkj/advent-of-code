@@ -18,7 +18,7 @@ describe('2020 day 19', () => {
         'aaaabbb',
       ].join('\n');
 
-      expect(part1(input)).toEqual(2);
+      expect(part1(input)).toBe(2);
     });
   });
 
@@ -74,7 +74,7 @@ describe('2020 day 19', () => {
         'aabbbbbaabbbaaaaaabbbbbababaaaaabbaaabba',
       ].join('\n');
 
-      expect(part2(input)).toEqual(12);
+      expect(part2(input)).toBe(12);
     });
   });
 });

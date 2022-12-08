@@ -19,7 +19,7 @@ describe('2020 - day 4', () => {
 
   describe('part 1', () => {
     it('should return how many valid passports are present', () => {
-      expect(part1(input)).toEqual(2);
+      expect(part1(input)).toBe(2);
     });
   });
 
@@ -41,7 +41,7 @@ describe('2020 - day 4', () => {
         'pid:3556412378 byr:2007',
       ].join('\n');
 
-      expect(part2(invalidPassports)).toEqual(0);
+      expect(part2(invalidPassports)).toBe(0);
     });
 
     it('should return 4 valid passports when all 4 are invalid', () => {
@@ -60,37 +60,37 @@ describe('2020 - day 4', () => {
         'iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719',
       ].join('\n');
 
-      expect(part2(validPassports)).toEqual(4);
+      expect(part2(validPassports)).toBe(4);
     });
   });
 
   describe('isValidField', () => {
     it('should validate byr', () => {
-      expect(isValidField('byr', '2002')).toEqual(true);
-      expect(isValidField('byr', '2003')).toEqual(false);
+      expect(isValidField('byr', '2002')).toBe(true);
+      expect(isValidField('byr', '2003')).toBe(false);
     });
 
     it('should validate hgt', () => {
-      expect(isValidField('hgt', '60in')).toEqual(true);
-      expect(isValidField('hgt', '190cm')).toEqual(true);
-      expect(isValidField('hgt', '190in')).toEqual(false);
-      expect(isValidField('hgt', '190')).toEqual(false);
+      expect(isValidField('hgt', '60in')).toBe(true);
+      expect(isValidField('hgt', '190cm')).toBe(true);
+      expect(isValidField('hgt', '190in')).toBe(false);
+      expect(isValidField('hgt', '190')).toBe(false);
     });
 
     it('should validate hcl', () => {
-      expect(isValidField('hcl', '#123abc')).toEqual(true);
-      expect(isValidField('hcl', '#123abz')).toEqual(false);
-      expect(isValidField('hcl', '123abc')).toEqual(false);
+      expect(isValidField('hcl', '#123abc')).toBe(true);
+      expect(isValidField('hcl', '#123abz')).toBe(false);
+      expect(isValidField('hcl', '123abc')).toBe(false);
     });
 
     it('should validate ecl', () => {
-      expect(isValidField('ecl', 'brn')).toEqual(true);
-      expect(isValidField('ecl', 'wat')).toEqual(false);
+      expect(isValidField('ecl', 'brn')).toBe(true);
+      expect(isValidField('ecl', 'wat')).toBe(false);
     });
 
     it('should validate pid', () => {
-      expect(isValidField('pid', '000000001')).toEqual(true);
-      expect(isValidField('pid', '0123456789')).toEqual(false);
+      expect(isValidField('pid', '000000001')).toBe(true);
+      expect(isValidField('pid', '0123456789')).toBe(false);
     });
   });
 });

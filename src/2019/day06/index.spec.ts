@@ -17,19 +17,19 @@ describe('2020 day 6', () => {
         'K)L',
       ].join('\n');
 
-      expect(part1(input)).toEqual(42);
+      expect(part1(input)).toBe(42);
     });
 
     it('should count the direct and indirect orbits (COM - D)', () => {
       const input = ['COM)B', 'B)C', 'C)D'].join('\n');
 
-      expect(part1(input)).toEqual(6);
+      expect(part1(input)).toBe(6);
     });
 
     it('should count the direct and indirect orbits (COM - D & H)', () => {
       const input = ['COM)B', 'B)C', 'C)D', 'B)G', 'G)H'].join('\n');
 
-      expect(part1(input)).toEqual(11);
+      expect(part1(input)).toBe(11);
     });
   });
 
@@ -51,7 +51,7 @@ describe('2020 day 6', () => {
         'I)SAN',
       ].join('\n');
 
-      expect(part2(input)).toEqual(4);
+      expect(part2(input)).toBe(4);
     });
   });
 });

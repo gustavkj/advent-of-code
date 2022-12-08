@@ -16,13 +16,13 @@ describe('2020 day 11', () => {
 
   describe('part 1', () => {
     it('should return how many seats end up occupied', () => {
-      expect(part1(input)).toEqual(37);
+      expect(part1(input)).toBe(37);
     });
   });
 
   describe('part 2', () => {
     it('should return how many seats end up occupied', () => {
-      expect(part2(input)).toEqual(26);
+      expect(part2(input)).toBe(26);
     });
   });
 });

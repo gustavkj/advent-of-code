@@ -21,7 +21,7 @@ describe('2020 day 6', () => {
         'b',
       ].join('\n');
 
-      expect(part1(input)).toEqual(11);
+      expect(part1(input)).toBe(11);
     });
   });
 
@@ -45,7 +45,7 @@ describe('2020 day 6', () => {
         'b',
       ].join('\n');
 
-      expect(part2(input)).toEqual(6);
+      expect(part2(input)).toBe(6);
     });
   });
 });

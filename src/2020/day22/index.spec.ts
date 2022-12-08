@@ -19,13 +19,13 @@ describe('2020 day 22', () => {
 
   describe('part 1', () => {
     it("should return the winning player's score", () => {
-      expect(part1(input)).toEqual(306);
+      expect(part1(input)).toBe(306);
     });
   });
 
   describe('part 2', () => {
     it("should return the winning player's score", () => {
-      expect(part2(input)).toEqual(291);
+      expect(part2(input)).toBe(291);
     });
 
     it('should up the ante and work for more than two players', () => {
@@ -53,7 +53,7 @@ describe('2020 day 22', () => {
         '10',
       ].join('\n');
 
-      expect(part2(upTheAnteInput)).toEqual(353);
+      expect(part2(upTheAnteInput)).toBe(353);
     });
   });
 });

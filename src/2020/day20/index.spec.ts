@@ -113,7 +113,7 @@ describe('2020 day 20', () => {
     ].join('\n');
 
     it('should return product of the IDs of the four corner tiles', () => {
-      expect(part1(input)).toEqual(20899048083289);
+      expect(part1(input)).toBe(20899048083289);
     });
   });
 
@@ -229,7 +229,7 @@ describe('2020 day 20', () => {
     ].join('\n');
 
     it('should return how many # are not part of a sea monster', () => {
-      expect(part2(input)).toEqual(273);
+      expect(part2(input)).toBe(273);
     });
   });
 });

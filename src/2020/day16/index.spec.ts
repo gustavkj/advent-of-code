@@ -18,7 +18,7 @@ describe('2020 day 16', () => {
 
   describe('part 1', () => {
     it('should return the ticket scanning error rate', () => {
-      expect(part1(input)).toEqual(71);
+      expect(part1(input)).toBe(71);
     });
   });
 });

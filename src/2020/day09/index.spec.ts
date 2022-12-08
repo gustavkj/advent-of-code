@@ -26,13 +26,13 @@ describe('2020 day 9', () => {
 
   describe('part 1', () => {
     it('should return the first number that is not a sum of two numbers in the preamble', () => {
-      expect(part1(input, 5)).toEqual(127);
+      expect(part1(input, 5)).toBe(127);
     });
   });
 
   describe('part 2', () => {
     it('should return the sum of the smallest and largest number of the range adding up to the number from part 1', () => {
-      expect(part2(input, 5)).toEqual(62);
+      expect(part2(input, 5)).toBe(62);
     });
   });
 });

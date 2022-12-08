@@ -26,13 +26,13 @@ describe('2020 day 24', () => {
 
   describe('part 1', () => {
     it('should return how many tiles are left with the black side up', () => {
-      expect(part1(input)).toEqual(10);
+      expect(part1(input)).toBe(10);
     });
   });
 
   describe('part 2', () => {
     it('should return how many tiles will be black after 100 days', () => {
-      expect(part2(input)).toEqual(2208);
+      expect(part2(input)).toBe(2208);
     });
   });
 });

@@ -5,13 +5,13 @@ describe('2020 day 17', () => {
 
   describe('part 1', () => {
     it('should return how many cubes are left in the active state after the sixth cycle', () => {
-      expect(part1(input)).toEqual(112);
+      expect(part1(input)).toBe(112);
     });
   });
 
   describe('part 2', () => {
     it('should return how many cubes are left in the active state after the sixth cycle', () => {
-      expect(part2(input)).toEqual(848);
+      expect(part2(input)).toBe(848);
     });
   });
 });

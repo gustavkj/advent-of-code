@@ -15,7 +15,7 @@ describe('2020 day 8', () => {
         'acc +6',
       ].join('\n');
 
-      expect(part1(input)).toEqual(5);
+      expect(part1(input)).toBe(5);
     });
   });
 
@@ -33,7 +33,7 @@ describe('2020 day 8', () => {
         'acc +6',
       ].join('\n');
 
-      expect(part2(input)).toEqual(8);
+      expect(part2(input)).toBe(8);
     });
   });
 });

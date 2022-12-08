@@ -49,11 +49,11 @@ describe('2020 day 10', () => {
 
   describe('part 2', () => {
     it('should return number of ways the adapters can be arranged, case 1', () => {
-      expect(part2(input1)).toEqual(8);
+      expect(part2(input1)).toBe(8);
     });
 
     it('should return number of ways the adapters can be arranged, case 2', () => {
-      expect(part2(input2)).toEqual(19208);
+      expect(part2(input2)).toBe(19208);
     });
   });
 });

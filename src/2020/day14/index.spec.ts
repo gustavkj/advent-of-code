@@ -10,7 +10,7 @@ describe('2020 day 14', () => {
         'mem[8] = 0',
       ].join('\n');
 
-      expect(part1(input)).toEqual(165);
+      expect(part1(input)).toBe(165);
     });
   });
 
@@ -23,7 +23,7 @@ describe('2020 day 14', () => {
         'mem[26] = 1',
       ].join('\n');
 
-      expect(part2(input)).toEqual(208);
+      expect(part2(input)).toBe(208);
     });
   });
 });

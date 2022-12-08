@@ -5,13 +5,13 @@ describe('2020 day 12', () => {
 
   describe('part 1', () => {
     it("should return the distance between the location and the ship's starting position", () => {
-      expect(part1(input)).toEqual(25);
+      expect(part1(input)).toBe(25);
     });
   });
 
   describe('part 2', () => {
     it("should return the distance between the location and the ship's starting position", () => {
-      expect(part2(input)).toEqual(286);
+      expect(part2(input)).toBe(286);
     });
   });
 });

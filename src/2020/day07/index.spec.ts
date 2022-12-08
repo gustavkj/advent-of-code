@@ -15,7 +15,7 @@ describe('2020 day 7', () => {
         'dotted black bags contain no other bags.',
       ].join('\n');
 
-      expect(part1(input)).toEqual(4);
+      expect(part1(input)).toBe(4);
     });
   });
 
@@ -33,7 +33,7 @@ describe('2020 day 7', () => {
         'dotted black bags contain no other bags.',
       ].join('\n');
 
-      expect(part2(input)).toEqual(32);
+      expect(part2(input)).toBe(32);
     });
 
     it('should return how many bags that must be carried inside the shiny gold bag, case 2', () => {
@@ -47,7 +47,7 @@ describe('2020 day 7', () => {
         'dark violet bags contain no other bags.',
       ].join('\n');
 
-      expect(part2(input)).toEqual(126);
+      expect(part2(input)).toBe(126);
     });
   });
 });
