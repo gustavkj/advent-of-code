@@ -1,15 +1,6 @@
 import aocLoader from 'aoc-loader';
 import config from './config';
 
-const year = Number(process.argv[2]);
-const day = Number(process.argv[3]);
-
-if (!year && !day) {
-  throw new Error(
-    'Please supply a year and a day to test using the format `npm start {year} {day}`',
-  );
-}
-
 type PartExecuter = (input: string) => string | number;
 
 interface Day {
@@ -17,24 +8,34 @@ interface Day {
   part2?: PartExecuter;
 }
 
-aocLoader(year, day, config.aocSessionCookie)
-  .then(async (data) => {
-    const dayFile = (await import(`./${year}/day${day.toString().padStart(2, '0')}`)) as Day;
+async function main() {
+  const year = Number(process.argv[2]);
+  const day = Number(process.argv[3]);
 
-    if (dayFile.part1) {
-      const before = new Date().getTime();
-      console.log(`Part 1: ${dayFile.part1(data)}`);
-      console.log(`  Took: ${((new Date().getTime() - before) / 1000).toFixed(3)} sek`);
-    } else {
-      console.log('Missing part 1');
-    }
+  if (!year && !day) {
+    throw new Error(
+      'Please supply a year and a day to test using the format `npm start {year} {day}`',
+    );
+  }
 
-    if (dayFile.part2) {
-      const before = new Date().getTime();
-      console.log(`Part 2: ${dayFile.part2(data)}`);
-      console.log(`  Took: ${((new Date().getTime() - before) / 1000).toFixed(3)} sek`);
-    } else {
-      console.log('Missing part 2');
-    }
-  })
-  .catch(console.error);
+  const data = await aocLoader(year, day, config.aocSessionCookie);
+  const dayFile = (await import(`./${year}/day${day.toString().padStart(2, '0')}`)) as Day;
+
+  if (dayFile.part1) {
+    const before = new Date().getTime();
+    console.log(`Part 1: ${dayFile.part1(data)}`);
+    console.log(`  Took: ${((new Date().getTime() - before) / 1000).toFixed(3)} s`);
+  } else {
+    console.log('Missing part 1');
+  }
+
+  if (dayFile.part2) {
+    const before = new Date().getTime();
+    console.log(`Part 2: ${dayFile.part2(data)}`);
+    console.log(`  Took: ${((new Date().getTime() - before) / 1000).toFixed(3)} s`);
+  } else {
+    console.log('Missing part 2');
+  }
+}
+
+main().catch(console.error);
