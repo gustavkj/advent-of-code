@@ -59,7 +59,7 @@ function parseInput(input: string) {
 export function part1(input: string): number {
   const caves = parseInput(input);
 
-  const startCave = caves.get('start') as Cave;
+  const startCave = caves.get('start')!;
 
   const pathsToExplore: Cave[][] = [[startCave]];
   const finishedPaths: Cave[][] = [];
@@ -72,12 +72,12 @@ export function part1(input: string): number {
 
     const possibleNextCaves = adjacentCaves.filter(
       // eslint-disable-next-line @typescript-eslint/no-loop-func
-      (cave) => !((path as Cave[]).includes(cave) && cave.isSmall()),
+      (cave) => !(path!.includes(cave) && cave.isSmall()),
     );
 
     // eslint-disable-next-line @typescript-eslint/no-loop-func
     possibleNextCaves.forEach((cave) => {
-      const nextPath = [...(path as Cave[]), cave];
+      const nextPath = [...path!, cave];
 
       if (cave.name === 'end') {
         finishedPaths.push(nextPath);
@@ -93,7 +93,7 @@ export function part1(input: string): number {
 export function part2(input: string): number {
   const caves = parseInput(input);
 
-  const startCave = caves.get('start') as Cave;
+  const startCave = caves.get('start')!;
 
   const pathsToExplore: Cave[][] = [[startCave]];
   const finishedPaths: Cave[][] = [];
@@ -111,13 +111,13 @@ export function part2(input: string): number {
     const possibleNextCaves = adjacentCaves.filter(
       // eslint-disable-next-line @typescript-eslint/no-loop-func
       (cave) =>
-        !((path as Cave[]).includes(cave) && cave.isSmall() && hasVisitedASmallCaveTwice) &&
+        !(path!.includes(cave) && cave.isSmall() && hasVisitedASmallCaveTwice) &&
         cave.name !== 'start',
     );
 
     // eslint-disable-next-line @typescript-eslint/no-loop-func
     possibleNextCaves.forEach((cave) => {
-      const nextPath = [...(path as Cave[]), cave];
+      const nextPath = [...path!, cave];
 
       if (cave.name === 'end') {
         finishedPaths.push(nextPath);

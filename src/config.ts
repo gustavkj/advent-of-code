@@ -8,7 +8,7 @@ const aocSessionCookie = process.env.AOC_SESSION_COOKIE;
 assert(aocSessionCookie, 'AOC_SESSION_COOKIE needs to be set');
 
 const config = {
-  aocSessionCookie: process.env.AOC_SESSION_COOKIE as string,
+  aocSessionCookie: process.env.AOC_SESSION_COOKIE!,
 };
 
 export default config;

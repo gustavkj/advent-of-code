@@ -90,12 +90,12 @@ export function part2(input: string): number {
   }
 
   const oxygenGeneratorRating = parseInt(
-    rows.find((_row, rowIndex) => !skippedRowOGR.has(rowIndex)) as string,
+    rows.find((_row, rowIndex) => !skippedRowOGR.has(rowIndex))!,
     2,
   );
 
   const co2ScrubberRating = parseInt(
-    rows.find((_row, rowIndex) => !skippedRowCSR.has(rowIndex)) as string,
+    rows.find((_row, rowIndex) => !skippedRowCSR.has(rowIndex))!,
     2,
   );
 

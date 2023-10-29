@@ -1,7 +1,7 @@
 import { Point } from '../../types';
 import { getManhattanDistance } from '../../utils';
 
-const directions = <const>['E', 'N', 'W', 'S'];
+const directions = ['E', 'N', 'W', 'S'] as const;
 
 type Direction = (typeof directions)[number];
 

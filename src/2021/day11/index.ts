@@ -43,7 +43,7 @@ export function part1(input: string): number {
       for (let x = 0; x < colCount; x += 1) {
         const positionKey = `${x},${y}`;
 
-        const octopusEnergyLevel = map.get(positionKey) as number;
+        const octopusEnergyLevel = map.get(positionKey)!;
         const newEnergyLevel = octopusEnergyLevel + 1;
         map.set(positionKey, newEnergyLevel);
 
@@ -98,7 +98,7 @@ export function part2(input: string): number {
       for (let x = 0; x < colCount; x += 1) {
         const positionKey = `${x},${y}`;
 
-        const octopusEnergyLevel = map.get(positionKey) as number;
+        const octopusEnergyLevel = map.get(positionKey)!;
         const newEnergyLevel = octopusEnergyLevel + 1;
         map.set(positionKey, newEnergyLevel);
 
