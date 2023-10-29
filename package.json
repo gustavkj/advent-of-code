@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "node -r ts-node/register --env-file=.env src/index.ts",
     "lint": "eslint --ext .js,.ts --quiet .",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "prettier --check .",
@@ -29,7 +29,6 @@
   "homepage": "https://github.com/gustavkj/advent-of-code#readme",
   "dependencies": {
     "aoc-loader": "1.4.4",
-    "dotenv": "16.0.3",
     "readline-sync": "1.4.10"
   },
   "devDependencies": {
