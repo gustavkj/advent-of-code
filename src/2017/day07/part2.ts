@@ -12,11 +12,11 @@ function balanceDisc(disc: BalancedDisc) {
 
     if (!disc.isBalanced) {
       const weights: Record<number, number> = {};
-      for (let i = 0; i < childWeights.length; i += 1) {
-        if (typeof weights[childWeights[i]] === 'undefined') {
-          weights[childWeights[i]] = 1;
+      for (const childWeight of childWeights) {
+        if (typeof weights[childWeight] === 'undefined') {
+          weights[childWeight] = 1;
         } else {
-          weights[childWeights[i]] += 1;
+          weights[childWeight] += 1;
         }
       }
 
