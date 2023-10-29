@@ -1,6 +1,6 @@
 const directions = <const>['north', 'east', 'south', 'west'];
 
-type Direction = typeof directions[number];
+type Direction = (typeof directions)[number];
 
 interface Tile {
   id: number;
