@@ -1,6 +1,6 @@
 function countIncreases(array: number[]): number {
   let numberOfIncreases = 0;
-  let previous = array.shift() as number;
+  let previous = array.shift()!;
 
   array.forEach((current) => {
     if (current > previous) {

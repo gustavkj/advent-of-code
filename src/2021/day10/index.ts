@@ -41,7 +41,7 @@ function prepareRows(input: string) {
         openingStack.push(char);
       } else {
         const endingLookupIndex = endings.indexOf(char);
-        const lastOpening = openingStack.pop() as string;
+        const lastOpening = openingStack.pop()!;
         const openingLookupIndex = openings.indexOf(lastOpening);
 
         if (openingLookupIndex !== endingLookupIndex) {

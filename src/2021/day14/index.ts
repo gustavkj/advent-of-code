@@ -22,7 +22,7 @@ function getResultAfterNthIteration(template: string, rules: Map<string, string>
     const nextPolymerPairs = new Map<string, number>();
 
     polymerPairs.forEach((numberOfPairs, polymerPair) => {
-      const middle = rules.get(polymerPair) as string;
+      const middle = rules.get(polymerPair)!;
       const newPairFront = polymerPair[0] + middle;
       const newPairBack = middle + polymerPair[1];
 

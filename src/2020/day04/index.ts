@@ -11,7 +11,7 @@ interface Passport {
 
 type PassportKey = keyof Passport;
 
-const passportKeys = <const>['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid', 'cid'];
+const passportKeys = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid', 'cid'] as const;
 
 type ValidFieldFunction = (key: string, value: string) => boolean;
 

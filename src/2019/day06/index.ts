@@ -13,7 +13,7 @@ function parseInput(input: string) {
     orbits[center] = {
       ...(orbits[center] ?? {}),
       name: center,
-      orbitedBy: [...((orbits[center] ?? {}).orbitedBy ?? []), satellite],
+      orbitedBy: [...(orbits[center]?.orbitedBy ?? []), satellite],
     };
 
     orbits[satellite] = {

@@ -1,4 +1,4 @@
-const directions = <const>['north', 'east', 'south', 'west'];
+const directions = ['north', 'east', 'south', 'west'] as const;
 
 type Direction = (typeof directions)[number];
 

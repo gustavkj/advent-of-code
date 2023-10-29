@@ -23,7 +23,7 @@ export function part1(input: string): string {
 
     cups.splice(destinationCupIndex + 1, 0, ...cupsToMove);
 
-    cups.push(cups.shift() as number);
+    cups.push(cups.shift()!);
     i += 1;
   }
 
@@ -55,15 +55,15 @@ export function part2(input: string): number {
   let i = 0;
   const maxCup = totalNumberOfCups;
 
-  let currentCup = cups.get(startingCups[0]) as Cup;
+  let currentCup = cups.get(startingCups[0])!;
 
   while (i < moves) {
     const cupsToMove = [];
-    let nextCup = cups.get(currentCup.next) as Cup;
+    let nextCup = cups.get(currentCup.next)!;
 
     while (cupsToMove.length < 3) {
       cupsToMove.push(nextCup.label);
-      nextCup = cups.get(nextCup.next) as Cup;
+      nextCup = cups.get(nextCup.next)!;
     }
 
     let destinationCupLabel = currentCup.label - 1;
@@ -75,9 +75,9 @@ export function part2(input: string): number {
       }
     }
 
-    const destinationCup = cups.get(destinationCupLabel) as Cup;
+    const destinationCup = cups.get(destinationCupLabel)!;
 
-    const lastCup = cups.get(cupsToMove[2]) as Cup;
+    const lastCup = cups.get(cupsToMove[2])!;
     currentCup.next = lastCup.next;
     lastCup.next = destinationCup.next;
     [destinationCup.next] = cupsToMove;
@@ -86,13 +86,13 @@ export function part2(input: string): number {
     cups.set(destinationCup.label, destinationCup);
     cups.set(lastCup.label, lastCup);
 
-    currentCup = cups.get(currentCup.next) as Cup;
+    currentCup = cups.get(currentCup.next)!;
     i += 1;
   }
 
-  const cupOne = cups.get(1) as Cup;
-  const cupTwo = cups.get(cupOne.next) as Cup;
-  const cupThree = cups.get(cupTwo.next) as Cup;
+  const cupOne = cups.get(1)!;
+  const cupTwo = cups.get(cupOne.next)!;
+  const cupThree = cups.get(cupTwo.next)!;
 
   return cupTwo.label * cupThree.label;
 }

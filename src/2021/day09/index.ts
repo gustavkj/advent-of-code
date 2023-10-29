@@ -27,7 +27,7 @@ export function part1(input: string): number {
   }
 
   return lowPoints.reduce(
-    (riskSum, lowPointPosition) => riskSum + 1 + (heightMap.get(lowPointPosition) as number),
+    (riskSum, lowPointPosition) => riskSum + 1 + heightMap.get(lowPointPosition)!,
     0,
   );
 }

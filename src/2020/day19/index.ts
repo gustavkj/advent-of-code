@@ -32,7 +32,7 @@ function buildRuleZero(ruleSpecs: Map<number, string>) {
 
       let subRules: number[][];
       if (rulePreps.has(ruleNum)) {
-        subRules = rulePreps.get(ruleNum) as number[][];
+        subRules = rulePreps.get(ruleNum)!;
       } else {
         subRules = ruleSpec.split('|').map((rulePart) => rulePart.trim().split(' ').map(Number));
 
@@ -56,7 +56,7 @@ function buildRuleZero(ruleSpecs: Map<number, string>) {
         .map((subRule) => {
           const newRule = subRule
             .map((subRuleNum) =>
-              ruleNum === subRuleNum ? `#${ruleNum}` : `(?:${ruleSpecs.get(subRuleNum) as string})`,
+              ruleNum === subRuleNum ? `#${ruleNum}` : `(?:${ruleSpecs.get(subRuleNum)!})`,
             )
             .join('');
 

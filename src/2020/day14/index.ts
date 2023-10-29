@@ -17,7 +17,7 @@ function parseInput(input: string): Instruction[] {
     .map((row) => {
       const match = /(?<type>[a-z]+)(?:\[(?<address>\d+)\])? = (?<value>.*)/.exec(row);
 
-      if (match === null || !match.groups) {
+      if (!match?.groups) {
         return undefined;
       }
 
@@ -93,7 +93,7 @@ export function part2(input: string): number {
       while (index < maxIterations) {
         const binaryFiller = decimalToBinary(index);
         const address = addressTemplate.reduceRight(
-          (array, v) => [v !== 'X' ? v : (binaryFiller.pop() as string), ...array],
+          (array, v) => [v !== 'X' ? v : binaryFiller.pop()!, ...array],
           [] as string[],
         );
 

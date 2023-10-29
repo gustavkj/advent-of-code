@@ -54,7 +54,7 @@ export function getIntersections(wirePaths: string[][]): Map<string, number> {
           nextPoints.forEach((point, pointDistance) => {
             const key = toKey(point);
             if (visited.has(key)) {
-              intersections.set(key, (visited.get(key) as number) + distance + pointDistance);
+              intersections.set(key, visited.get(key)! + distance + pointDistance);
             }
           });
         }

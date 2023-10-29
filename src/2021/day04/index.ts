@@ -94,9 +94,7 @@ export function part1(input: string): number {
   let finalScore = 0;
 
   // Step through draw order
-  for (let index = 0; index < drawOrder.length; index += 1) {
-    const drawNumber = drawOrder[index];
-
+  for (const drawNumber of drawOrder) {
     const boardWithBingo = bingoBoards.find((bingoBoard) => {
       // Mark numbers on each board
       bingoBoard.markNumber(drawNumber);
@@ -122,9 +120,7 @@ export function part2(input: string): number {
   let boardsOfInterest = [...bingoBoards];
 
   // Step through draw order
-  for (let index = 0; index < drawOrder.length; index += 1) {
-    const drawNumber = drawOrder[index];
-
+  for (const drawNumber of drawOrder) {
     if (boardsOfInterest.length > 1) {
       // If a board has bingo, remove it from the deck
       boardsOfInterest = boardsOfInterest.filter((bingoBoard) => {
