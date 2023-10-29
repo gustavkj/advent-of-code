@@ -3,7 +3,7 @@ import { getManhattanDistance } from '../../utils';
 
 const directions = <const>['E', 'N', 'W', 'S'];
 
-type Direction = typeof directions[number];
+type Direction = (typeof directions)[number];
 
 interface Instruction {
   action: Direction | 'L' | 'R' | 'F';
