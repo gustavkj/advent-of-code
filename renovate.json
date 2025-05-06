@@ -7,7 +7,7 @@
     ":label(dependencies)",
     ":enableVulnerabilityAlertsWithLabel(security)",
     ":timezone(Europe/Stockholm)",
-    "schedule:weekly",
+    "schedule:quarterly",
     ":automergePr",
     ":automergeLinters",
     ":automergeTesters"
