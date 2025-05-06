@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/jest": "29.5.14",
-    "@types/node": "20.8.9",
+    "@types/node": "20.17.43",
     "@types/readline-sync": "1.4.6",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
